@@ -19,10 +19,8 @@ public class POI implements Serializable {
     private String descripcion;
     private String url;
 
-    public POI() {
-
-    }
-
+    public POI() {}
+    
     public POI(Double latitud, Double longitud, String nombre, String descripcion) {
 
         this.latitud = latitud;

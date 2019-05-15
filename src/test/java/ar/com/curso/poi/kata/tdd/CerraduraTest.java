@@ -5,56 +5,60 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
 public class CerraduraTest {
-
-    private Cerradura cerradura = new Cerradura(1234, 3);
-
-    @Test
-    public void crearCerraduraDeberiaEstarCerrada(){
-        assertThat(cerradura.estaCerrada()).isTrue();
-    }
-    
-    @Test
-    public void crearCerraduraNoDeberiaEstarBloqueada(){
-        assertThat(cerradura.fueBloqueada()).isFalse();
-    }
-    
-    @Test
-    public void abrirConClaveCorrectaDeberiaAbrirLaCerradura(){
-        assertThat(cerradura.abrir(1234)).isTrue();
-    }
-    
-    @Test
-    public void abrirConClaveInCorrectaNoDeberiaAbrirLaCerradura(){
-        assertThat(cerradura.abrir(4444)).isFalse();
-    }
-    
-    @Test
-    public void aperturaExitosaDeberiaIncrementarContador(){
-        cerradura.abrir(1234);
-        assertThat(cerradura.contarAperturasExitosas()).isEqualTo(1);
-    }
-    
-    @Test
-    public void cerrarCerraduraDeberiaCerrarla(){
-        cerradura.abrir(1234);
-        assertThat(cerradura.estaCerrada()).isFalse();
-        cerradura.cerrar();
-        assertThat(cerradura.estaCerrada()).isTrue();
-    }
-    
-    @Test
-    public void abrirMasDeNVecesConClaveInvalidaDeberiaBloqueaCerradura(){
-        cerradura.abrir(444);
-        assertThat(cerradura.estaCerrada()).isTrue();
-        assertThat(cerradura.fueBloqueada()).isFalse();
-        cerradura.abrir(444);
-        assertThat(cerradura.estaCerrada()).isTrue();
-        assertThat(cerradura.fueBloqueada()).isFalse();
-        cerradura.abrir(444);
-        assertThat(cerradura.estaCerrada()).isTrue();
-        assertThat(cerradura.fueBloqueada()).isFalse();
-        cerradura.abrir(444);
-        assertThat(cerradura.estaCerrada()).isTrue();
-        assertThat(cerradura.fueBloqueada()).isTrue();
-    }
+	
+	@Test
+	public void crearCerraduraConClaveYCantidadDeFallos() {
+		Cerradura c = new Cerradura(1234, 3);
+		assertThat(c).isNotNull();
+		assertThat(c.getCantidadDeFallos()).isEqualTo(3);
+		assertThat(c.getClave()).isEqualTo(1234);
+	}
+	
+	@Test
+	public void crearOtraCerraduraConClaveYCantidadDeFallos() {
+		Cerradura c = new Cerradura(1235, 5);
+		assertThat(c).isNotNull();
+		assertThat(c.getCantidadDeFallos()).isEqualTo(5);
+		assertThat(c.getClave()).isEqualTo(1235);
+	}
+	
+	@Test
+	public void abrirConLaClaveCorrectaAbre() {
+		Cerradura c = new Cerradura(1235, 5);
+		assertThat(c.abrir(1235)).isTrue();
+	}
+	
+	@Test
+	public void abrirConLaClaveIncorrectaNoAbre() {
+		Cerradura c = new Cerradura(1235, 5);
+		assertThat(c.abrir(1234)).isFalse();
+	}
+	
+	@Test
+	public void cerrarCierra() {
+		Cerradura c = new Cerradura(1235, 5);
+		c.cerrar();
+		assertThat(c.estaCerrada()).isTrue();
+	}
+	
+	@Test
+	public void noCerrarNoCierra() {
+		Cerradura c = new Cerradura(1235, 5);
+		c.abrir(1235);
+		assertThat(c.estaCerrada()).isFalse();
+	}
+	
+	@Test
+	public void alCerrarNoQuedaAbierta() {
+		Cerradura c = new Cerradura(1234, 2);
+		c.cerrar();
+		assertThat(c.estaAbierta()).isFalse();
+	}
+	
+	@Test
+	public void alAbrirQuedaAbierta() {
+		Cerradura c = new Cerradura(1235, 5);
+		c.abrir(1235);
+		assertThat(c.estaAbierta()).isTrue();
+	}
 }

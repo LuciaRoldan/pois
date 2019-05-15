@@ -1,5 +1,6 @@
 package ar.com.curso.poi.accept.definiciones;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -41,6 +42,12 @@ public class POIMasCercanoStepDef {
     @Entonces("el servicio devuelve solo (.*)")
     public void el_servicio_devuelve_el_nombre_de_un_poi(String poiEsperado){
         assertThat(respuestaJson).contains(poiEsperado);
+    }
+    
+    @Entonces("^el servicio devuelve el mensaje \"([^\"]*)\"$")
+    public void el_servicio_devuelve_el_mensaje(String arg1) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 
 

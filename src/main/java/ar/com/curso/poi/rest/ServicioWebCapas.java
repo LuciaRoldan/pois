@@ -43,7 +43,9 @@ public class ServicioWebCapas {
 
         CalculadorDeDistancia calculadorDeDistancia = new CalculadorDeDistancia();
         Double distanciaMinima = 0.0;
-        POI poiConDistanciaMinima = new POI();
+        
+        
+        POI poiConDistanciaMinima = new POI(latitud, longitud);
 
         POI ubicacionActual = new POI(latitud, longitud);
 

@@ -10,4 +10,7 @@ Escenario: Obtener el punto más cercano a mi ubicación
     Cuando pido el POI mas cercano del servicio pizzerias
     Entonces el servicio devuelve solo Las cuartetas
 
-
+Escenario:
+    Dado que estoy en -34.2332 y 58.134
+    Cuando pido el POI mas cercano del servicio pizzerias
+    Entonces el servicio devuelve el mensaje "el punto ingresado es invalido"
