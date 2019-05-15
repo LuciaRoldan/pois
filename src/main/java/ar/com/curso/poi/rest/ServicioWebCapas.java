@@ -9,6 +9,7 @@ import javax.ws.rs.Produces;
 
 import ar.com.curso.poi.servicios.CalculadorDeDistancia;
 import ar.com.curso.poi.modelo.POI;
+import ar.com.curso.poi.modelo.Respuesta;
 import ar.com.curso.poi.servicios.ServicioPOI;
 import ar.com.curso.poi.servicios.ServicioPOIImpl;
 
@@ -35,7 +36,7 @@ public class ServicioWebCapas {
     @GET
     @Path("/poiMasCercano/{nombreServicio}/{latitud}/{longitud}")
     @Produces("application/xml")
-    public POI obtenerPOIMasCercano(@PathParam("nombreServicio") String nombreServicio,
+    public Respuesta obtenerPOIMasCercano(@PathParam("nombreServicio") String nombreServicio,
         @PathParam("latitud") String latitud,
         @PathParam("longitud") String longitud) {
 
@@ -44,8 +45,9 @@ public class ServicioWebCapas {
         CalculadorDeDistancia calculadorDeDistancia = new CalculadorDeDistancia();
         Double distanciaMinima = 0.0;
         
+        Respuesta respuesta = new Respuesta();
         
-        POI poiConDistanciaMinima = new POI(latitud, longitud);
+        POI poiConDistanciaMinima = new POI();
 
         POI ubicacionActual = new POI(latitud, longitud);
 
@@ -64,6 +66,9 @@ public class ServicioWebCapas {
             }
         }
 
-        return poiConDistanciaMinima;
+        respuesta.setPoi(poiConDistanciaMinima);
+        respuesta.setMensaje("el punto ingresado es invalido");
+        
+        return respuesta;
     }
 }

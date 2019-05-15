@@ -31,12 +31,12 @@ public class RealidadAumentada {
 	}
 	
 	@Test
-	public void elPrimerPOIDeRAEsElMac() {
+	public void elPrimerPOIDeRAEsLasCuartetas() {
 		
 		ServicioPOIImpl servicio = new ServicioPOIImpl();
 		List<POI> capaRealidadAumentada = servicio.obtenerPOIs("Realidad aumentada");
 		
-		assertEquals("Mc donalds" , capaRealidadAumentada.get(0).getNombre());
+		assertEquals("Café de los angelitos" , capaRealidadAumentada.get(0).getNombre());
 	}
 
 }

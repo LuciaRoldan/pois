@@ -91,20 +91,20 @@ public class RepositorioCapas {
 
         List<POI> pois = new ArrayList<POI>();
         pois.add(new POI(
-            -34.603705,
-            -58.379058,
-            "Mc donalds",
-            "La mejor hamburguesa"));
+    		-34.6101956,
+    		-58.3988598,
+            "Café de los angelitos",
+            "Café de tango histórico de Bunos Aires"));
         pois.add(new POI(
-            -34.59762,
-            -58.385527,
-            "Burguer King",
-            "El rey de la hamburguesa"));
+        	-34.6086487,
+        	-58.3804061,
+            "Café tortoni",
+            "El cafe porteño que tenés que visitar"));
         pois.add(new POI(
-            -34.60393,
-            -58.38605,
-            "Mostaza",
-            "No te comas el verso"));
+        	-34.6111436,
+        	-58.422982,
+            "Café las violetas",
+            "Rstaurante y confitería tradicional"));
         return pois;
     }
 

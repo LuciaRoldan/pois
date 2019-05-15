@@ -59,15 +59,16 @@ public class BasicoAceptacionIT {
 	}
 
 	@Test
-	public void pizzeriaMasCercanaAlObeliscoConSelenium(){
+	public void pizzeriaMasCercanaAlObeliscoConSelenium() throws Exception{
 
 		String latitudOblelisco = "-34.603765";
 		String longitudObleisco = "-58.381570";
 
 		String url = urlBase +"/poiMasCercano/pizzerias/"+latitudOblelisco+"/"+longitudObleisco;
 
-		seleniumDriver.get(url);
-		assertThat(seleniumDriver.getPageSource()).contains("cuartetas");
+		assertThat(this.obtenerContenidoRespuesta(url)).contains("cuartetas");
 	}
+	
+	
 
 }
