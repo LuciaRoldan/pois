@@ -19,3 +19,8 @@ Escenario:
     Dado que estoy en -34.603765 y 58.381573
     Cuando pido el POI mas cercano del servicio pizzerias
     Entonces el servicio no devuelve un POI
+
+Escenario: Obtener el punto más cercano a mi ubicación
+    Dado que estoy en -34.603983 y -58.410941
+    Cuando pido el POI mas cercano del servicio cafeterias
+    Entonces el servicio devuelve solo Starbucks
