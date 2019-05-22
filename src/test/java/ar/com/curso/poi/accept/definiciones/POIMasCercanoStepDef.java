@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertFalse;
 
 public class POIMasCercanoStepDef {
 
@@ -46,6 +47,11 @@ public class POIMasCercanoStepDef {
     @Entonces("^el servicio devuelve el mensaje \"([^\"]*)\"$")
     public void el_servicio_devuelve_el_mensaje(String mensaje) throws Throwable {
     	assertThat(respuestaJson).contains(mensaje);
+    }
+    
+    @Entonces("^el servicio no devuelve un POI$")
+    public void el_servicio_no_devuelve_un_POI() throws Throwable {
+    	assertFalse(respuestaJson.contains("<poi>"));
     }
 
 
